@@ -15,6 +15,8 @@
 		BF7522DC242D34390054C4B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522DB242D34390054C4B7 /* UserService.swift */; };
 		BF7522DE242D3E4C0054C4B7 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522DD242D3E4C0054C4B7 /* UIImageView.swift */; };
 		BF7522E0242D44260054C4B7 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522DF242D44260054C4B7 /* UIButton.swift */; };
+		BF7522E2242E5CE20054C4B7 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522E1242E5CE20054C4B7 /* Loading.swift */; };
+		BF7522E4242E89240054C4B7 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522E3242E89240054C4B7 /* MatchVC.swift */; };
 		BFB93712242C4801008FA6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93711242C4801008FA6A2 /* AppDelegate.swift */; };
 		BFB93714242C4801008FA6A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93713242C4801008FA6A2 /* SceneDelegate.swift */; };
 		BFB93716242C4801008FA6A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93715242C4801008FA6A2 /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 		BF7522DB242D34390054C4B7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF7522DD242D3E4C0054C4B7 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		BF7522DF242D44260054C4B7 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		BF7522E1242E5CE20054C4B7 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		BF7522E3242E89240054C4B7 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		BFB9370E242C4801008FA6A2 /* tinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB93711242C4801008FA6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFB93713242C4801008FA6A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7522CD242D0E610054C4B7 /* CombineVC.swift */,
+				BF7522E3242E89240054C4B7 /* MatchVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -65,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7522D0242D21A90054C4B7 /* CombineCardView.swift */,
+				BF7522E1242E5CE20054C4B7 /* Loading.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 				BFB93712242C4801008FA6A2 /* AppDelegate.swift in Sources */,
 				BF7522E0242D44260054C4B7 /* UIButton.swift in Sources */,
 				BF7522D4242D25040054C4B7 /* UIView.swift in Sources */,
+				BF7522E4242E89240054C4B7 /* MatchVC.swift in Sources */,
+				BF7522E2242E5CE20054C4B7 /* Loading.swift in Sources */,
 				BFB93714242C4801008FA6A2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

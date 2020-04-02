@@ -11,6 +11,7 @@ import UIKit
 enum Action{
     case deslike
     case like
+    case superlike
 }
 
 class CombineVC: UIViewController {
@@ -29,14 +30,28 @@ class CombineVC: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor.systemGroupedBackground
+        
+        let loading = Loading(frame: view.frame)
+        view.insertSubview(loading, at: 0)
+        
         addHeader()
         addFooter()
         searchUsers()
     }
     
     func searchUsers(){
-        users = UserService.shared.searchUsers()
-        addCard()
+//        users = UserService.shared.searchUsers()
+//        addCard()
+        
+        UserService.shared.searchUsers { (users, err) in
+            if let users = users{
+                DispatchQueue.main.async {
+                    self.users = users
+                    self.addCard()
+                }
+            }
+        }
+        
     }
     
 }
@@ -72,6 +87,11 @@ extension CombineVC{
             bottom: view.bottomAnchor,
             padding: .init(top: 0, left: 16, bottom: 34, right: 16)
         )
+        
+        deslikeButton.addTarget(self, action: #selector(deslikeClick), for: .touchUpInside)
+        superlikeButton.addTarget(self, action: #selector(superlikeClick), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(likeClick), for: .touchUpInside)
+        
     }
 }
 
@@ -89,10 +109,9 @@ extension CombineVC{
             gesture.addTarget(self, action: #selector(handlerCard))
             card.addGestureRecognizer(gesture)
             
-            view.insertSubview(card, at: 0)
+            view.insertSubview(card, at: 1)
         }
     }
-    
     func removeCard(card: UIView){
         card.removeFromSuperview()
         
@@ -100,7 +119,14 @@ extension CombineVC{
             return user.id != card.tag
         })
     }
-    
+    func verifyMatch(user: User){
+        if user.match{
+            let matchVC = MatchVC()
+            matchVC.modalPresentationStyle = .fullScreen
+            
+            self.present(matchVC, animated: true, completion: nil)
+        }
+    }
 }
 
 extension CombineVC{
@@ -144,24 +170,51 @@ extension CombineVC{
         }
     }
     
+    @objc func deslikeClick(){
+        self.animetionCard(rotationAngle: -0.4, action: .deslike)
+    }
+    
+    @objc func superlikeClick(){
+        self.animetionCard(rotationAngle: 0, action: .superlike)
+    }
+    
+    @objc func likeClick(){
+        self.animetionCard(rotationAngle: 0.4, action: .like)
+    }
+    
     func animetionCard(rotationAngle: CGFloat, action: Action){
         if let user = self.users.first{
             for view in self.view.subviews{
                 if view.tag == user.id{
                     if let card = view as? CombineCardView{
                         let center: CGPoint
+                        var like: Bool
                         
                         switch action {
                         case .deslike:
                             center = CGPoint(x: card.center.x - self.view.bounds.width, y: card.center.y + 50)
+                            like = false
                         case .like:
                             center = CGPoint(x: card.center.x + self.view.bounds.width, y: card.center.y + 50)
+                            like = true
+                        case .superlike:
+                            center = CGPoint(x: card.center.x, y: card.center.y - self.view.bounds.height)
+                            like = true
                         }
                         
                         UIView.animate(withDuration: 0.2, animations: {
                             card.center = center
                             card.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                            
+                            card.deslikeImageView.alpha = like == false ? 1 : 0
+                            card.likeImageView.alpha = like == true ? 1 : 0
+                            
                         }) { (_) in
+                            
+                            if like{
+                                self.verifyMatch(user: user)
+                            }
+                            
                             self.removeCard(card: card)
                         }
                         
