@@ -8,7 +8,16 @@
 
 import UIKit
 
-class MatchVC: UIViewController {
+class MatchVC: UIViewController, UITextFieldDelegate {
+    
+    var user: User?{
+        didSet{
+            if let user = user{
+                photoImageView.image = UIImage(named: user.image)
+                messageLabel.text = "\(user.name) curtiu você também"
+            }
+        }
+    }
     
     let photoImageView: UIImageView = .photoImageView(named: "pessoa-1")
     let likeImageView: UIImageView = .photoImageView(named: "icone-like")
@@ -54,11 +63,22 @@ class MatchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         view.addSubview(photoImageView)
         photoImageView.preencherSuperview()
         
-        messageLabel.text = "Ana Curtiu vc também!"
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        gradient.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.black.cgColor]
+        
+        photoImageView.layer.addSublayer(gradient)
+        
+        messageTextField.delegate = self
         messageLabel.textAlignment = .center
+        
+        backButton.addTarget(self, action: #selector(backClick), for: .touchUpInside)
         
         likeImageView.translatesAutoresizingMaskIntoConstraints = false
         likeImageView.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -73,6 +93,8 @@ class MatchVC: UIViewController {
             padding: .init(top: 0, left: 0, bottom: 0, right: 16)
         )
         
+        messageSendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        
         let stackView = UIStackView(arrangedSubviews: [likeImageView, messageLabel, messageTextField, backButton])
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -86,6 +108,51 @@ class MatchVC: UIViewController {
             padding: .init(top: 0, left: 32, bottom: 46, right: 32)
             )
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendMessage()
+        
+        return true
+    }
+    
+    @objc func backClick(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func sendMessage(){
+        if let message = self.messageTextField.text {
+            
+        }
+    }
+    
+    @objc func keyboardShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double{
+                UIView.animate(withDuration: duration) {
+                    self.view.frame = CGRect(
+                        x: UIScreen.main.bounds.origin.x,
+                        y: UIScreen.main.bounds.origin.y,
+                        width: UIScreen.main.bounds.width,
+                        height: UIScreen.main.bounds.height - keyboardSize.height
+                    )
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardHide(notification: NSNotification){
+        if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double{
+            UIView.animate(withDuration: duration) {
+                self.view.frame = UIScreen.main.bounds
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
 }
