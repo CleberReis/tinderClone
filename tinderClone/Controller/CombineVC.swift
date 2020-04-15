@@ -105,6 +105,10 @@ extension CombineVC{
             card.users = user
             card.tag = user.id
             
+            card.callback = {(data) in
+                self.visualizarDetalhe(user: data)
+            }
+            
             let gesture = UIPanGestureRecognizer()
             gesture.addTarget(self, action: #selector(handlerCard))
             card.addGestureRecognizer(gesture)
@@ -127,6 +131,13 @@ extension CombineVC{
             
             self.present(matchVC, animated: true, completion: nil)
         }
+    }
+    func visualizarDetalhe(user: User){
+        let detalheVC = DetalheVC()
+        detalheVC.user = user
+        detalheVC.modalPresentationStyle = .fullScreen
+        
+        self.present(detalheVC, animated: true, completion: nil)
     }
 }
 
@@ -151,12 +162,12 @@ extension CombineVC{
             if gesture.state == .ended{
                 
                 if card.center.x > self.view.bounds.width + 50{
-                    self.animetionCard(rotationAngle: rotationangle, action: .like)
+                    self.animationCard(rotationAngle: rotationangle, action: .like)
                     return
                 }
                 
                 if card.center.x < -50{
-                    self.animetionCard(rotationAngle: rotationangle, action: .deslike)
+                    self.animationCard(rotationAngle: rotationangle, action: .deslike)
                     return
                 }
                 
@@ -172,18 +183,18 @@ extension CombineVC{
     }
     
     @objc func deslikeClick(){
-        self.animetionCard(rotationAngle: -0.4, action: .deslike)
+        self.animationCard(rotationAngle: -0.4, action: .deslike)
     }
     
     @objc func superlikeClick(){
-        self.animetionCard(rotationAngle: 0, action: .superlike)
+        self.animationCard(rotationAngle: 0, action: .superlike)
     }
     
     @objc func likeClick(){
-        self.animetionCard(rotationAngle: 0.4, action: .like)
+        self.animationCard(rotationAngle: 0.4, action: .like)
     }
     
-    func animetionCard(rotationAngle: CGFloat, action: Action){
+    func animationCard(rotationAngle: CGFloat, action: Action){
         if let user = self.users.first{
             for view in self.view.subviews{
                 if view.tag == user.id{

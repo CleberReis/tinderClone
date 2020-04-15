@@ -126,7 +126,7 @@ class MatchVC: UIViewController, UITextFieldDelegate {
     
     @objc func sendMessage(){
         if let message = self.messageTextField.text {
-            
+            print("\(message)")
         }
     }
     
