@@ -20,6 +20,9 @@
 		BF7522E0242D44260054C4B7 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522DF242D44260054C4B7 /* UIButton.swift */; };
 		BF7522E2242E5CE20054C4B7 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522E1242E5CE20054C4B7 /* Loading.swift */; };
 		BF7522E4242E89240054C4B7 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7522E3242E89240054C4B7 /* MatchVC.swift */; };
+		BFA38E0F2448027500EDCC25 /* DetalheFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA38E0E2448027500EDCC25 /* DetalheFotoCell.swift */; };
+		BFA38E11244804AD00EDCC25 /* SlideFotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA38E10244804AD00EDCC25 /* SlideFotosVC.swift */; };
+		BFA38E13244808B600EDCC25 /* SlideFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA38E12244808B600EDCC25 /* SlideFotoCell.swift */; };
 		BFB93712242C4801008FA6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93711242C4801008FA6A2 /* AppDelegate.swift */; };
 		BFB93714242C4801008FA6A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93713242C4801008FA6A2 /* SceneDelegate.swift */; };
 		BFB93716242C4801008FA6A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB93715242C4801008FA6A2 /* ViewController.swift */; };
@@ -42,6 +45,9 @@
 		BF7522DF242D44260054C4B7 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		BF7522E1242E5CE20054C4B7 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		BF7522E3242E89240054C4B7 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
+		BFA38E0E2448027500EDCC25 /* DetalheFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheFotoCell.swift; sourceTree = "<group>"; };
+		BFA38E10244804AD00EDCC25 /* SlideFotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFotosVC.swift; sourceTree = "<group>"; };
+		BFA38E12244808B600EDCC25 /* SlideFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFotoCell.swift; sourceTree = "<group>"; };
 		BFB9370E242C4801008FA6A2 /* tinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB93711242C4801008FA6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFB93713242C4801008FA6A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 				BF7522CD242D0E610054C4B7 /* CombineVC.swift */,
 				BF7522E3242E89240054C4B7 /* MatchVC.swift */,
 				BF0DE6D72443A999000FCBCB /* DetalheVC.swift */,
+				BFA38E10244804AD00EDCC25 /* SlideFotosVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 				BF7522E1242E5CE20054C4B7 /* Loading.swift */,
 				BF1996D12446993F0056E012 /* DetalheHeaderView.swift */,
 				BF1996D324469DF60056E012 /* DetalhePerfilCell.swift */,
+				BFA38E0E2448027500EDCC25 /* DetalheFotoCell.swift */,
+				BFA38E12244808B600EDCC25 /* SlideFotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA38E11244804AD00EDCC25 /* SlideFotosVC.swift in Sources */,
 				BF7522CE242D0E610054C4B7 /* CombineVC.swift in Sources */,
 				BFB93716242C4801008FA6A2 /* ViewController.swift in Sources */,
 				BF7522DC242D34390054C4B7 /* UserService.swift in Sources */,
@@ -229,8 +239,10 @@
 				BF7522E0242D44260054C4B7 /* UIButton.swift in Sources */,
 				BF7522D4242D25040054C4B7 /* UIView.swift in Sources */,
 				BF1996D424469DF60056E012 /* DetalhePerfilCell.swift in Sources */,
+				BFA38E13244808B600EDCC25 /* SlideFotoCell.swift in Sources */,
 				BF1996D22446993F0056E012 /* DetalheHeaderView.swift in Sources */,
 				BF7522E4242E89240054C4B7 /* MatchVC.swift in Sources */,
+				BFA38E0F2448027500EDCC25 /* DetalheFotoCell.swift in Sources */,
 				BF7522E2242E5CE20054C4B7 /* Loading.swift in Sources */,
 				BFB93714242C4801008FA6A2 /* SceneDelegate.swift in Sources */,
 			);
