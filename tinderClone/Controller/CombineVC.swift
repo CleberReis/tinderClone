@@ -136,6 +136,16 @@ extension CombineVC{
         let detalheVC = DetalheVC()
         detalheVC.user = user
         detalheVC.modalPresentationStyle = .fullScreen
+        detalheVC.callback = { (user, action) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if action == .deslike{
+                    self.deslikeClick()
+                }else{
+                    self.likeClick()
+                }
+            }
+            
+        }
         
         self.present(detalheVC, animated: true, completion: nil)
     }
